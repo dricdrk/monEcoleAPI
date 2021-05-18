@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::group(['middleware' => ['cors', 'json.response']], function () {
+    Route::apiResource('examresult', 'API\ExamResultController');
+    Route::apiResource('institution', 'API\InstitutionController');
+});
+
